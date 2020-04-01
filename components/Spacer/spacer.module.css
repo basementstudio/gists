@@ -1,0 +1,12 @@
+.spacer {
+  display: block;
+  width: 1px;
+  height: 1px;
+}
+.inline {
+  display: inline-block;
+  margin-top: 0;
+}
+.padding {
+  margin: 0 !important;
+}

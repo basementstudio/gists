@@ -1,0 +1,33 @@
+.wrapper {
+  overflow: hidden;
+}
+
+.light {
+  border-bottom: none;
+}
+
+.marquee {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  font-weight: 700;
+  white-space: nowrap;
+  animation: marquee 7.5s infinite linear;
+  padding-left: 2ch;
+}
+
+.text:after {
+  content: attr(data-text);
+  padding-left: 2ch;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Whyte";
+  src: url("/fonts/Whyte-Regular.woff2") format("woff2"),
+    url("/fonts/Whyte-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Whyte";
+  src: url("/fonts/Whyte-Bold.woff2") format("woff2"),
+    url("/fonts/Whyte-Bold.woff") format("woff");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Whyte Inktrap";
+  src: url("/fonts/WhyteInktrap-Regular.woff2") format("woff2"),
+    url("/fonts/WhyteInktrap-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Whyte Inktrap";
+  src: url("/fonts/WhyteInktrap-Bold.woff2") format("woff2"),
+    url("/fonts/WhyteInktrap-Bold.woff") format("woff");
+  font-weight: bold;
+}
