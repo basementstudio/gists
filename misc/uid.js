@@ -1,5 +1,5 @@
 // A "casual" uid generator.
-// The magic here is done in .toString(36), which converts an integer into a 12 digit string.
+// The magic here is done in .toString(36), that converts an integer into a 12 digit string.
 
 function getRandomString(length = 7) {
   return Math.random()
