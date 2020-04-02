@@ -1,0 +1,11 @@
+.image {
+  height: var(--height);
+  width: var(width);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  overflow: hidden;
+  max-width: 100%;
+  filter: grayscale(1);
+}
