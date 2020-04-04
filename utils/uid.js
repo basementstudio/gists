@@ -7,7 +7,7 @@ function getRandomString(length = 7) {
     .substr(2, length) // Remove first two characters because one includes a dot
 }
 
-export default const uid = (length = 7, result = getRandomString(length)) => {
+export default function uid(length = 7, result = getRandomString(length)) {
   if (length > 200) throw "Max length is 200"
   if (result.length < length) {
     const toAdd = getRandomString(length - result.length)
