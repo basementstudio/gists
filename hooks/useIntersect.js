@@ -3,19 +3,20 @@ import { useEffect, useState, useRef } from "react"
 export function useIntersect(options) {
   const [observerEntry, setEntry] = useState({})
   const elementRef = useRef()
+  const observer = useRef(
+    new IntersectionObserver(([entry]) => setEntry(entry), options)
+  )
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => setEntry(entries[0]),
-      options
-    )
+    const { current: currentObserver } = observer
+    currentObserver.disconnect()
 
     if (elementRef.current) {
-      observer.observe(elementRef.current)
+      currentObserver.observe(elementRef.current)
     }
 
-    return () => observer.disconnect()
-  }, [elementRef, options])
+    return () => currentObserver.disconnect()
+  }, [elementRef])
 
   return { observerEntry, elementRef }
 }
