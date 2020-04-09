@@ -1,0 +1,46 @@
+{
+  "name": "name",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "(eslint . && prettier --check '**/*.{js,ts,tsx}' --loglevel warn) || yarn lint:warn",
+    "lint:warn": "echo '\\nError: Not all files are pretty, run yarn lint:fix\\n'",
+    "lint:fix": "eslint . --fix --rule 'react-hooks/exhaustive-deps: off' && prettier --write '**/*.{js,ts,tsx}'",
+    "lint:staged": "lint-staged --quiet"
+  },
+  "dependencies": {
+    "next": "^9.3.0",
+    "next-compose-plugins": "^2.2.0",
+    "next-svgr": "^0.0.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-spring": "^8.0.27"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.1.0",
+    "babel-preset-react-app": "^9.1.2",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-react-constant-elements": "^7.8.3",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "husky": "^4.0.10",
+    "lint-staged": "^10.0.9",
+    "prettier": "^2.0.2"
+  },
+  "pre-commit": "lint:staged",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
