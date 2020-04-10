@@ -18,7 +18,7 @@ const Slider = ({ duration, children }) => {
     <div className={styles["slider-container"]}>
       <div
         className={styles["slider-content-wrapper"]}
-        style={{ "--duration": duration && `${duration * 2}s` }}
+        style={{ "--duration": duration ? `${duration * 2}s` : "10s" }}
       >
         <div>{child(1)}</div>
         <div>{child(2)}</div>
