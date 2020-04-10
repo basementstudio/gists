@@ -1,0 +1,18 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin: 35px 0;
+}
+
+.inner {
+  margin-top: -35px;
+}
+
+.icon {
+  --rotation: rotate(0);
+  width: 45px;
+  height: 45px;
+  transform: var(--rotation);
+}
