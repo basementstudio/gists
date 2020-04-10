@@ -1,0 +1,25 @@
+.slider-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.slider-content-wrapper {
+  --duration: 10s;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: slide var(--duration) linear infinite;
+}
+
+.slider-content-wrapper > div {
+  display: inline-block;
+}
+
+@keyframes slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
