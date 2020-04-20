@@ -1,0 +1,37 @@
+.container {
+  position: relative;
+  z-index: var(--z-index, 100);
+}
+
+.tooltip {
+  display: block;
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #282828;
+  color: white;
+  font-size: 12px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  width: max-content;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: var(--z-index, 100);
+  box-shadow: var(--bs-drop);
+}
+
+.tip {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container:focus {
+  outline: none;
+}
+
+.container:hover .tooltip {
+  opacity: 1;
+}
