@@ -33,6 +33,12 @@
   font-variant-ligatures: common-ligatures;
 }
 
+.full-height {
+  min-height: 100vh;
+  /* fix for safari mobile */
+  min-height: -webkit-fill-available;
+}
+
 h1,
 h2,
 h3,
