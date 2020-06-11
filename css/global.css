@@ -7,13 +7,6 @@
   /* Color Scheme */
   --black: #000;
   --white: #fff;
-  --gray: #ededed;
-  --green: #acfb5b;
-  --yellow: #ffec06;
-  --pink: #ffadff;
-  --blue: #0d6afa;
-  --indigo: #680dfa;
-  --orange: #ffaa46;
 
   /* Fonts */
   --font-primary: sans-serif;
@@ -122,7 +115,6 @@ p.xxs {
 
 img {
   object-fit: cover;
-  border: var(--elt-border);
 }
 
 a {
@@ -137,83 +129,15 @@ a:not(.no-decoration):after {
   right: 0;
   height: 0.075em;
   min-height: 1px;
-  -webkit-transform-origin: right;
   transform-origin: right;
-  -webkit-transform: scaleX(0);
   transform: scaleX(0);
   background-color: currentColor;
-  -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.19, 1, 0.22, 1);
-  transition: -webkit-transform 0.95s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.95s cubic-bezier(0.19, 1, 0.22, 1);
-  transition: transform 0.95s cubic-bezier(0.19, 1, 0.22, 1),
-    -webkit-transform 0.95s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 a:not(.no-decoration):hover:after {
-  -webkit-transform-origin: left;
   transform-origin: left;
-  -webkit-transform: scaleX(1);
   transform: scaleX(1);
-}
-
-@media screen and (min-width: 375px) {
-  h1 {
-    font-size: calc(55px + (157 - 55) * ((100vw - 375px) / (1440 - 375)));
-  }
-
-  h2 {
-    font-size: calc(48px + (117 - 48) * ((100vw - 375px) / (1440 - 375)));
-  }
-
-  h3 {
-    font-size: calc(42px + (88 - 42) * ((100vw - 375px) / (1440 - 375)));
-  }
-
-  h4 {
-    font-size: calc(36px + (66 - 36) * ((100vw - 375px) / (1440 - 375)));
-  }
-
-  h5 {
-    font-size: calc(31px + (49 - 31) * ((100vw - 375px) / (1440 - 375)));
-  }
-
-  h6 {
-    font-size: calc(27px + (37 - 27) * ((100vw - 375px) / (1440 - 375)));
-  }
-
-  p {
-    font-size: calc(24px + (27 - 24) * ((100vw - 375px) / (1440 - 375)));
-  }
-}
-
-@media (max-width: 1125px) {
-  :root {
-  }
-}
-
-@media (max-width: 800px) {
-  :root {
-  }
-
-  h1 {
-    letter-spacing: -3px;
-  }
-
-  h2,
-  h3,
-  h4,
-  h5 {
-    letter-spacing: -2px;
-  }
-
-  h6,
-  p {
-    letter-spacing: -1px;
-  }
-
-  img {
-    object-fit: contain;
-  }
 }
 
 @media (max-width: 800px) {
@@ -227,33 +151,3 @@ a:not(.no-decoration):hover:after {
     display: none !important;
   }
 }
-
-/* @media screen and (min-width: 1440px) {
-  h1 {
-    font-size: 157px;
-  }
-
-  h2 {
-    font-size: 117px;
-  }
-
-  h3 {
-    font-size: 88px;
-  }
-
-  h4 {
-    font-size: 66px;
-  }
-
-  h5 {
-    font-size: 49px;
-  }
-
-  h6 {
-    font-size: 37px;
-  }
-
-  p {
-    font-size: 27px;
-  }
-} */

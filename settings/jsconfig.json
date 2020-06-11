@@ -19,12 +19,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "@components/*": ["./components/*"],
-      "@illustrations/*": ["./illustrations/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@libs/*": ["./libs/*"]
-    },
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
