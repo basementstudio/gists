@@ -1,0 +1,13 @@
+.container {
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+.video {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s;
+}
