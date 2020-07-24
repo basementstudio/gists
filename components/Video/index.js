@@ -15,7 +15,7 @@ const Video = ({ height, src, poster }) => {
     if (videoRef.current.readyState >= 3) {
       loaded(videoRef.current)
     }
-  }, [videoRef])
+  }, [videoRef?.current?.readyState])
 
   return (
     <div className={styles.container} style={{ "--bg-image": poster, height }}>
