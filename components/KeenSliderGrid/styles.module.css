@@ -1,0 +1,25 @@
+.container {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+}
+
+.arrowControlsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.arrowControlsButton {
+  border-radius: full;
+  border: 1px solid #e6e6e6;
+  font-size: 24px;
+  margin-right: 8px;
+  color: #525252;
+  transition: color 0.1s;
+}
+
+.arrowControlsButton:hover {
+  color: #000000;
+}
