@@ -1,22 +1,63 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
-export function useIntersect(options) {
-  const [observerEntry, setEntry] = useState({})
-  const elementRef = useRef()
-  const observer = useRef(
-    new IntersectionObserver(([entry]) => setEntry(entry), options)
-  )
+/***
+How to Use:
+  
+  import { useEffect, useRef } from "react"
+  import useIntersect from "hooks/useIntersect"
+
+  const component = () => {
+    const singleElementRef = useRef(null)
+    const [observer, setElements, entries] = useIntersect({
+      threshold: 0.25,  
+      root: null
+    })
+    
+    useEffect(() => {
+      setElements(singleElementRef.current)
+    }, [setElements])
+
+    useEffect(() => {
+      if (entries.length && entries[0].isIntersecting) {
+        ... IS INTERSECTING ...
+      } else {
+        ... NOT INTERSECTING ...
+      }
+    }, [entries, observer])
+    
+    return (
+      <p ref={singleElementRef}>test</p>
+    )
+}
+***/
+
+
+const useIntersect = (options) => {
+  const [elements, setElements] = useState([])
+  const [entries, setEntries] = useState([])
+  const observer = useRef(null)
 
   useEffect(() => {
-    const { current: currentObserver } = observer
+    observer.current = new IntersectionObserver((observedEntries) => {
+      setEntries(observedEntries)
+    }, options)
+  }, [options])
+
+  useEffect(() => {
+    const currentObserver = observer.current
+
     currentObserver.disconnect()
 
-    if (elementRef.current) {
-      currentObserver.observe(elementRef.current)
+    if (Array.isArray(elements)) {
+      elements.forEach((element) => currentObserver.observe(element))
+    } else {
+      currentObserver.observe(elements)
     }
 
-    return () => currentObserver.disconnect()
-  }, [elementRef])
+    return () => (currentObserver ? currentObserver.disconnect() : null)
+  }, [elements])
 
-  return { observerEntry, elementRef }
+  return [observer.current, setElements, entries]
 }
+
+export default useIntersect
