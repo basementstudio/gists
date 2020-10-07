@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useMemo } from "react"
+import { useEffect, useState, useCallback, useMemo } from "react";
 
 type Cursor =
   | "unset"
@@ -37,41 +37,56 @@ type Cursor =
   | "zoom-in"
   | "zoom-out"
   | "grab"
-  | "grabbing"
+  | "grabbing";
 
-type Props = { initialState?: Cursor; resetOnUnmount?: boolean }
+type Props = {
+  initialState?: Cursor;
+  resetOnUnmount?: boolean;
+  getInitialStateFromDocument?: boolean;
+};
 
-const defaultProps: Props = { resetOnUnmount: true }
+const useDocumentCursor = (
+  {
+    initialState,
+    resetOnUnmount = true,
+    getInitialStateFromDocument,
+  }: Props = { resetOnUnmount: true }
+) => {
+  const [cursor, set] = useState<Cursor | undefined>(initialState);
 
-const useDocumentCursor = ({
-  initialState,
-  resetOnUnmount
-}: Props = defaultProps) => {
-  const [cursor, set] = useState<Cursor | undefined>(initialState)
+  const setCursor = useCallback((newCursor: Cursor, updateState = false) => {
+    document.documentElement.style.cursor = newCursor;
+    if (updateState) set(newCursor);
+  }, []);
 
-  const setCursor = useCallback(
-    (newCursor: Cursor, updateState: boolean = false) => {
-      document.body.style.cursor = newCursor
-      if (updateState) set(newCursor)
-    },
-    []
-  )
+  const waitCursor = useCallback((updateState = false) => {
+    document.documentElement.style.cursor = "wait";
+    if (updateState) set("wait");
+  }, []);
 
-  const resetCursor = useCallback((updateState: boolean = false) => {
-    document.body.style.removeProperty("cursor")
-    if (updateState) set(undefined)
-  }, [])
+  const resetCursor = useCallback((updateState = false) => {
+    document.documentElement.style.removeProperty("cursor");
+    if (updateState) set(undefined);
+  }, []);
 
-  const isWaiting = useMemo(() => cursor === "wait", [cursor])
+  const isWaiting = useMemo(() => cursor === "wait", [cursor]);
 
   useEffect(() => {
-    if (initialState) setCursor(initialState)
-    else setCursor((document.body.style.cursor as Cursor) || undefined, true)
+    if (initialState) setCursor(initialState);
+    else if (getInitialStateFromDocument) {
+      setCursor(document.documentElement.style.cursor as Cursor, true);
+    }
 
-    if (resetOnUnmount) return resetCursor
-  }, [initialState, resetOnUnmount])
+    if (resetOnUnmount) return resetCursor;
+  }, [
+    initialState,
+    resetCursor,
+    resetOnUnmount,
+    setCursor,
+    getInitialStateFromDocument,
+  ]);
 
-  return { cursor, isWaiting, setCursor, resetCursor }
-}
+  return { cursor, isWaiting, setCursor, waitCursor, resetCursor };
+};
 
-export { useDocumentCursor }
+export { useDocumentCursor };
