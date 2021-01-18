@@ -12,7 +12,7 @@ export default function useMediaQuery(queryString) {
     mqChange(mq);
 
     return () => {
-      mq.removeEventListener(mqChange);
+      mq.removeEventListener('change', mqChange);
     };
   }, [queryString]);
 
