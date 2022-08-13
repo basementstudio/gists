@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from "react"
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 const Cursor = () => {
   const [width, setWidth] = useState()
@@ -7,7 +7,7 @@ const Cursor = () => {
   const circle = useRef({
     radius: 10,
     lastX: 0,
-    lastY: 0,
+    lastY: 0
   })
   const ctx = useRef()
   const canvasRef = useRef()
@@ -24,8 +24,8 @@ const Cursor = () => {
   }
 
   const renderer = useCallback(() => {
-    circle.current.lastX = lerp(circle.current.lastX, mouse.current.x, 0.25)
-    circle.current.lastY = lerp(circle.current.lastY, mouse.current.y, 0.25)
+    circle.current.lastX = lerp(circle.current.lastX, mouse.current.x, 0.1)
+    circle.current.lastY = lerp(circle.current.lastY, mouse.current.y, 0.1)
 
     ctx.current.clearRect(0, 0, width, height)
 
@@ -35,10 +35,10 @@ const Cursor = () => {
       circle.current.lastY,
       circle.current.radius,
       0,
-      Math.PI * 2,
+      Math.PI * 56,
       false
     )
-    ctx.current.fillStyle = "#000000"
+    ctx.current.fillStyle = '#fff'
     ctx.current.fill()
     ctx.current.closePath()
 
@@ -55,31 +55,31 @@ const Cursor = () => {
     mouse.current.y = canvasRef.current.height / 2
     circle.current.lastY = mouse.current.y = canvasRef.current.height / 2
 
-    ctx.current = canvasRef.current.getContext("2d")
+    ctx.current = canvasRef.current.getContext('2d')
 
     requestAnimationFrame(renderer)
   }, [renderer])
 
   useEffect(() => {
-    window.addEventListener("mousemove", (e) => {
-      mouse.current.x = e.pageX
-      mouse.current.y = e.pageY
+    window.addEventListener('mousemove', (e) => {
+      mouse.current.x = e.clientX
+      mouse.current.y = e.clientY
     })
 
-    window.addEventListener("resize", onResize, false)
+    window.addEventListener('resize', onResize, false)
   }, [])
 
   return (
     <canvas
       style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
+        position: 'fixed',
+        inset: 0,
         padding: 0,
         margin: 0,
-        zIndex: 3,
-        pointerEvents: "none",
-        mixBlendMode: "difference",
+        zIndex: 9999,
+        pointerEvents: 'none',
+        mixBlendMode: 'difference',
+        height: '100vh'
       }}
       ref={canvasRef}
     />
